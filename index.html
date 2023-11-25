@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ao redor dos EUA" />
+    <meta name="keywords" content="EUA, cidades, natureza" />
+    <meta name="author" content="Giovana Assis" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+    <title>Ao redor dos EUA</title>
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <img
+        src="./images/logo.png"
+        alt="Logotipo 'Around The US'"
+        class="header__logotipo"
+      />
+      <hr class="header__line" />
+    </header>
+
+    <section class="profile">
+      <div class="profile__info">
+        <img
+          src="./images/picture.jpg"
+          alt="Foto de perfil"
+          class="profile__picture"
+        />
+        <div class="profile__description">
+          <div class="profile__text">
+            <h1 class="profile__name">Jacques Costeau</h1>
+            <button class="edit-button" type="button">
+              <img
+                src="images/button.png"
+                alt="Desenho de um lápis"
+                class="edit"
+              />
+            </button>
+          </div>
+          <h2 class="profile__detail">Explorar</h2>
+        </div>
+      </div>
+      <button class="add-button" type="button">
+        <img src="/images/add-button.svg" alt="Sinal de adição" class="add" />
+      </button>
+    </section>
+
+    <ul class="cards cards-container"></ul>
+    <section class="popup popup-hidden">
+      <div class="popup__wrapper">
+        <div class="popup__style">
+          <form class="popup__form" name="form_profile" novalidate>
+            <button class="popup__close" type="button">
+              <img
+                src="./images/Close-Icon.png"
+                alt="Letra 'X', indicando local de fechamento"
+                class="close"
+              />
+            </button>
+            <h3 class="popup__title">Editar perfil</h3>
+            <input
+              type="text"
+              class="popup__input popup__name"
+              id="name__input"
+              placeholder="Nome"
+              value=""
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="name__input-error"></span>
+
+            <input
+              type="text"
+              class="popup__input popup__detail"
+              id="detail__input"
+              placeholder="Descrição"
+              value=""
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="detail__input-error"></span>
+            <button
+              class="popup__save popup__save_profile popup__save-disabled"
+              type="submit"
+              disabled
+            >
+              Salvar
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <template id="template">
+      <li class="card">
+        <button class="card__delete">
+          <img src="./images/Trash.svg" alt="Lata de lixo" class="trash" />
+        </button>
+        <img src="#" alt="#" class="card__image" onclick="openImage()" />
+        <div class="card__info">
+          <h3 class="card__title">#</h3>
+          <button
+            class="card__heart card__heart-inactive card__heart-active"
+          ></button>
+        </div>
+      </li>
+    </template>
+    <section id="popup-photo" class="popup popup-hidden">
+      <div class="popup__wrapper">
+        <div class="popup__style">
+          <button class="popup__close" type="button">
+            <img
+              src="./images/Close-Icon.png"
+              alt="Letra 'X', indicando local de fechamento"
+              class="close"
+            />
+          </button>
+          <img src="#" alt="#" class="popup__image" />
+          <h3 class="popup__place">#</h3>
+        </div>
+      </div>
+    </section>
+    <div class="popup-card">
+      <section class="popup popup-hidden">
+        <div class="popup__wrapper">
+          <div class="popup__style">
+            <form class="popup__form" name="form__card">
+              <button class="popup__close" type="button">
+                <img
+                  src="./images/Close-Icon.png"
+                  alt="Letra 'X', indicando local de fechamento"
+                  class="close"
+                />
+              </button>
+              <h3 class="popup__title">Novo local</h3>
+              <input
+                type="text"
+                class="popup__input popup__name"
+                id="place__input"
+                placeholder="Título"
+                value=""
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span class="place__input-error"></span>
+
+              <input
+                type="url"
+                class="popup__input popup__detail"
+                id="url__input"
+                placeholder="Link de imagem"
+                value=""
+                required
+              />
+              <span class="url__input-error"></span>
+              <button
+                class="popup__save popup__save_place popup__save-disabled"
+                type="submit"
+                disabled
+              >
+                Criar
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <h3 class="footer__copyrights">&#169; 2023. Around the U.S.</h3>
+    </footer>
+
+    <script src="./pages/index.js"></script>
+    <script src="./pages/validate.js"></script>
+  </body>
+</html>
