@@ -1,0 +1,103 @@
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px 17px;
+  margin-top: 50px;
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  max-width: 282px;
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.card__delete {
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 0;
+  right: 15px;
+  top: 18px;
+}
+
+
+.card__image {
+  height: 282px;
+  width: 100%;
+  margin: 0;
+}
+
+.card__info {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 15px 31px 15px;
+}
+
+.card__title {
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  letter-spacing: 0em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.card__heart {
+  background-color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.card__heart:hover {
+  opacity: 0.5;
+}
+
+.card__heart-inactive {
+    background-image: url(../images/heart.svg);
+    width: 21px;
+    height: 19px;
+    align-self: center;
+
+}
+
+.card__heart-active {
+    background-image: url(../images/heart-black.svg);
+    width: 21px;
+    height: 19px;
+    align-self: center;
+} 
+
+@media screen and (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    margin-top: 36px;
+  }
+
+  .card {
+    margin: 0 auto;
+  }
+
+  .card__image {
+    height: 350px;
+    width: 300px;
+  object-fit: cover;    
+  }
+}
