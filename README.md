@@ -12,4 +12,4 @@ O projeto foi estruturado em HTML5, estilizado com folhas de CSS e com funções
 Adicionar contagem de curtidas e opção de troca de foto de perfil.
 
 ### Acesse o site em: 
-https://giovana-assis.github.io/web_project_4_ptbr/
+https://giovana-assis.github.io/web_project_around/
