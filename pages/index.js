@@ -1,6 +1,12 @@
+import Card from "./Card.js"
+
 const openFormButton = document.querySelector(".edit-button");
 const popup = document.querySelector(".popup");
 const closeButton = popup.querySelector(".popup__close");
+const addFormButton = document.querySelector(".add-button");
+const popupCard = document.querySelector(".popup-card");
+const popupAdd = popupCard.querySelector(".popup");
+const closeButtonCard = popupCard.querySelector(".popup__close");
 
 function addPopup() {
   popup.classList.add("popup-visible");
@@ -15,7 +21,6 @@ closeButton.addEventListener("click", closePopup);
 
 const profileName = document.querySelector(".profile__name");
 const profileDetail = document.querySelector(".profile__detail");
-
 const inputName = document.querySelector(".popup__name");
 const inputDetail = document.querySelector(".popup__detail");
 const formProfile = document.forms.form_profile;
@@ -28,29 +33,10 @@ function changeProfile(e) {
 }
 formProfile.addEventListener("submit", changeProfile);
 
-function createCard(card) {
-  const cardTemplate = document.querySelector("#template").content;
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  const deleteButton = cardElement.querySelector(".card__delete");
-  const likeButton = cardElement.querySelector(".card__heart");
-  const cardImage = cardElement.querySelector(".card__image");
-
-  cardElement.querySelector(".card__title").textContent = card.name;
-  cardImage.setAttribute("src", card.link);
-  cardImage.setAttribute("alt", card.name);
-  cardImage.addEventListener("click", () => openImage(card));
-  deleteButton.addEventListener("click", () => {
-    deleteButton.parentElement.remove();
-  });
-  likeButton.classList.remove("card__heart-active");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__heart-active");
-  });
-  return cardElement;
-}
-
 const popUpPhoto = document.querySelector("#popup-photo");
-function openImage(card) {
+
+const openImage = (card) => {
+  console.log("1")
   popUpPhoto.classList.add("popup-visible");
   popUpPhoto.querySelector(".popup__image").setAttribute("src", card.link);
   popUpPhoto.querySelector(".popup__place").textContent = card.name;
@@ -60,6 +46,10 @@ const closeImage = () => {
   popUpPhoto.classList.remove("popup-visible");
 };
 popUpPhoto.querySelector(".popup__close").addEventListener("click", closeImage);
+
+// const cards = Array.from(document.querySelectorAll(".card"))
+// const cardElement = cards.forEach((cardElement) => {
+//   cardElement.addEventListener("click", () => {console.log(cardElement)})})
 
 const initialCards = [
   {
@@ -87,17 +77,35 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
   },
 ];
+  const container = document.querySelector(".cards-container");
 
-const container = document.querySelector(".cards");
-for (const cards of initialCards) {
-  const card = createCard(cards);
-  container.append(card);
+const renderCard = (name, link) => {
+  const card = new Card(name, link, "#template");
+  container.prepend(card.generateCard());
+  }
+
+initialCards.forEach((card) => {
+renderCard(card.name, card.link)
+// container.append(card)   COMO COLOCAR NA ORDEM CERTA?
+
+})
+  
+const inputPlace = popupCard.querySelector(".popup__name");
+const inputLink = popupCard.querySelector(".popup__detail");
+const cardForm = document.forms.form__card;
+const addCard = (e) => {
+  e.preventDefault();
+
+  const newCard = {
+    name: inputPlace.value,
+    link: inputLink.value
+  }
+  renderCard(newCard.name, newCard.link);
+  closePopupCard()
 }
 
-const addFormButton = document.querySelector(".add-button");
-const popupCard = document.querySelector(".popup-card");
-const popupAdd = popupCard.querySelector(".popup");
-const closeButtonCard = popupCard.querySelector(".popup__close");
+cardForm.addEventListener("submit", addCard);
+
 
 function addPopupCard() {
   popupAdd.classList.add("popup-visible");
@@ -109,22 +117,6 @@ function closePopupCard() {
 
 addFormButton.addEventListener("click", addPopupCard);
 closeButtonCard.addEventListener("click", closePopupCard);
-const cardForm = document.forms.form__card;
-const inputPlace = popupCard.querySelector(".popup__name");
-const inputLink = popupCard.querySelector(".popup__detail");
-
-function addNewCard(e) {
-  e.preventDefault();
-
-  const card = createCard({
-    name: inputPlace.value,
-    link: inputLink.value,
-  });
-  container.prepend(card);
-  closePopupCard();
-}
-
-cardForm.addEventListener("submit", addNewCard);
 
 const closePopupEsc = (e) => {
   if (e.key === "Escape") {

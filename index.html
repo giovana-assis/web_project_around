@@ -95,15 +95,15 @@
       </div>
     </section>
     <template id="template">
-      <li class="card">
+      <li class="card" id="card">
         <button class="card__delete">
           <img src="./images/Trash.svg" alt="Lata de lixo" class="trash" />
         </button>
-        <img src="#" alt="#" class="card__image" onclick="openImage()" />
+        <img src="#" alt="#" class="card__image"/>
         <div class="card__info">
           <h3 class="card__title">#</h3>
           <button
-            class="card__heart card__heart-inactive card__heart-active"
+            class="card__heart card__heart-inactive"
           ></button>
         </div>
       </li>
@@ -172,7 +172,9 @@
       <h3 class="footer__copyrights">&#169; 2023. Around the U.S.</h3>
     </footer>
 
-    <script src="./pages/index.js"></script>
-    <script src="./pages/validate.js"></script>
+    <script type="module" src="./pages/index.js"></script>
+    <script type="module" src="./pages/validate.js"></script>
+    <script type="module" src="./pages/FormValidator.js"></script>
+    <script type="module" src="./pages/Card.js"></script>
   </body>
 </html>
