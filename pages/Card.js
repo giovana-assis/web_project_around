@@ -1,5 +1,3 @@
-const deleteButton = document.querySelector(".card__delete");
-
 class Card {
   constructor(name, link, cardTemplate) {
     this._name = name;
