@@ -1,4 +1,4 @@
-import { renderCard } from "./index.js";
+import { renderCard, closeImage } from "./index.js";
 const openFormButton = document.querySelector(".edit-button");
 const popup = document.querySelector(".popup");
 const closeButton = popup.querySelector(".popup__close");
@@ -35,30 +35,6 @@ function changeProfile(e) {
   closePopup();
 }
 formProfile.addEventListener("submit", changeProfile);
-
-//   Abrir pop-up de imagem
-
-const openImage = (Card) => {
-  
-};
-
-
-const popUpPhoto = document.querySelector("#popup-photo");
-
-var cardList = Array.from(document.querySelectorAll(".card"))
-cardList.forEach((cardElement) => {
-  const cardImage = cardElement.querySelector(".card__image")
-  cardImage.addEventListener("click", (Card) => {
-  popUpPhoto.classList.add("popup-visible");
-  popUpPhoto.querySelector(".popup__image").src = Card.link
-  popUpPhoto.querySelector(".popup__place").textContent = cardElement.querySelector(".card__title");
-  })})
-
-const closeImage = () => {
-  popUpPhoto.classList.remove("popup-visible");
-};
-
-popUpPhoto.querySelector(".popup__close").addEventListener("click", closeImage);
 
 // Abrir e fechar pop-up do cartão
 function addPopupCard() {
