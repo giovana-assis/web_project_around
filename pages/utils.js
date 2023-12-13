@@ -38,22 +38,21 @@ formProfile.addEventListener("submit", changeProfile);
 
 //   Abrir pop-up de imagem
 
-const popUpPhoto = document.querySelector("#popup-photo");
-
-// var cardList = Array.from(document.querySelectorAll(".card"))
-// cardList.forEach((cardElement) => {
-//   const cardImage = cardElement.querySelector(".card__image")
-//   cardImage.addEventListener("click", () => {openImage})})
-
-
-const openImage = (card) => {
-  popUpPhoto.classList.add("popup-visible");
-  popUpPhoto.querySelector(".popup__image").setAttribute("src", card.link);
-  popUpPhoto.querySelector(".popup__place").textContent = card.name;
+const openImage = (Card) => {
+  
 };
 
-const cardImage = document.querySelector(".card__image")
-cardImage.addEventListener("click", openImage)
+
+const popUpPhoto = document.querySelector("#popup-photo");
+
+var cardList = Array.from(document.querySelectorAll(".card"))
+cardList.forEach((cardElement) => {
+  const cardImage = cardElement.querySelector(".card__image")
+  cardImage.addEventListener("click", (Card) => {
+  popUpPhoto.classList.add("popup-visible");
+  popUpPhoto.querySelector(".popup__image").src = Card.link
+  popUpPhoto.querySelector(".popup__place").textContent = cardElement.querySelector(".card__title");
+  })})
 
 const closeImage = () => {
   popUpPhoto.classList.remove("popup-visible");

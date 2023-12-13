@@ -7,8 +7,9 @@ class Card {
 
   _getTemplate() {
     const cardTemplate = document
-      .querySelector("#template")
-      .content.querySelector(".card")
+      .querySelector(this._cardTemplate)
+      .content
+      .querySelector(".card")
       .cloneNode(true);
 
     return cardTemplate;
@@ -36,6 +37,7 @@ class Card {
       .addEventListener("click", () => {
         this._likeCard();
       });
+
   }
 
   _deleteCard() {
@@ -44,9 +46,10 @@ class Card {
 
   _likeCard() {
     this._element
-    .querySelector(".card__heart")
-    .classList.add("card__heart-active");
+      .querySelector(".card__heart")  
+      .classList.add("card__heart-active");
   }
+
 }
 
 export default Card;
