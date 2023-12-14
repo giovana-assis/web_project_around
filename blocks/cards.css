@@ -1,4 +1,3 @@
-
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -25,7 +24,6 @@
   right: 15px;
   top: 18px;
 }
-
 
 .card__image {
   height: 282px;
@@ -62,19 +60,18 @@
 }
 
 .card__heart-inactive {
-    background-image: url(../images/heart.svg);
-    width: 21px;
-    height: 19px;
-    align-self: center;
-
+  background-image: url(../images/heart.svg);
+  width: 21px;
+  height: 19px;
+  align-self: center;
 }
 
 .card__heart-active {
-    background-image: url(../images/heart-black.svg);
-    width: 21px;
-    height: 19px;
-    align-self: center;
-} 
+  background-image: url(../images/heart-black.svg);
+  width: 21px;
+  height: 19px;
+  align-self: center;
+}
 
 @media screen and (max-width: 768px) {
   .cards {
@@ -98,6 +95,6 @@
   .card__image {
     height: 350px;
     width: 300px;
-  object-fit: cover;    
+    object-fit: cover;
   }
 }

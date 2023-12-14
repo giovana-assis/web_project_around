@@ -1,4 +1,5 @@
-import { renderCard, closeImage } from "./index.js";
+import { renderCard } from "./index.js";
+
 const openFormButton = document.querySelector(".edit-button");
 const popup = document.querySelector(".popup");
 const closeButton = popup.querySelector(".popup__close");
@@ -32,6 +33,7 @@ function changeProfile(e) {
   e.preventDefault();
   profileName.textContent = inputName.value;
   profileDetail.textContent = inputDetail.value;
+  formProfile.reset();
   closePopup();
 }
 formProfile.addEventListener("submit", changeProfile);
@@ -47,6 +49,17 @@ function closePopupCard() {
 
 addFormButton.addEventListener("click", addPopupCard);
 closeButtonCard.addEventListener("click", closePopupCard);
+
+// Fechar pop-up imagem
+
+const popUpPhoto = document.querySelector("#popup-photo");
+const closeImage = () => {
+  popUpPhoto.classList.remove("popup-visible");
+};
+
+popUpPhoto.querySelector(".popup__close").addEventListener("click", closeImage);
+
+// Fechar pop-ups com Esc ou clique
 
 const closePopupEsc = (e) => {
   if (e.key === "Escape") {
@@ -79,6 +92,7 @@ const addCard = (e) => {
     link: inputLink.value,
   };
   renderCard(newCard.name, newCard.link);
+  cardForm.reset();
   closePopupCard();
 };
 

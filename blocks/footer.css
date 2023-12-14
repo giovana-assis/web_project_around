@@ -8,11 +8,11 @@
   color: #545454;
 }
 @media screen and (max-width: 576px) {
-.footer__copyrights {
-font-size: 14px;
-font-style: normal;
-line-height: normal;
-padding: 0;
-margin: 50px 19px 36px;
-}
+  .footer__copyrights {
+    font-size: 14px;
+    font-style: normal;
+    line-height: normal;
+    padding: 0;
+    margin: 50px 19px 36px;
+  }
 }

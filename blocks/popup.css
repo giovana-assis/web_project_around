@@ -108,6 +108,7 @@
 }
 
 .popup__save-disabled {
+  cursor: not-allowed;
   background-color: white;
   color: rgba(0, 0, 0, 0.2);
 }
