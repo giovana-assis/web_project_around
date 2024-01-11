@@ -48,7 +48,7 @@
     </section>
 
     <ul class="cards cards-container"></ul>
-    <section class="popup popup-hidden">
+    <section class="popup popup-profile popup-hidden">
       <div class="popup__wrapper">
         <div class="popup__style">
           <form class="popup__form" name="form_profile" novalidate>
@@ -62,10 +62,10 @@
             <h3 class="popup__title">Editar perfil</h3>
             <input
               type="text"
+              name="popup__name-profile"
               class="popup__input popup__name"
               id="popup__name"
               placeholder="Nome"
-              value=""
               minlength="2"
               maxlength="40"
               required
@@ -74,10 +74,10 @@
 
             <input
               type="text"
+              name="popup__name-detail"
               class="popup__input popup__detail"
               id="popup__detail"
               placeholder="Descrição"
-              value=""
               minlength="2"
               maxlength="200"
               required
@@ -121,51 +121,52 @@
         </div>
       </div>
     </section>
-    <div class="popup-card">
-      <section class="popup popup-hidden">
-        <div class="popup__wrapper">
-          <div class="popup__style">
-            <form class="popup__form" name="form__card">
-              <button class="popup__close" type="button">
-                <img
-                  src="./images/Close-Icon.png"
-                  alt="Letra 'X', indicando local de fechamento"
-                  class="close"
-                />
-              </button>
-              <h3 class="popup__title">Novo local</h3>
-              <input
-                type="text"
-                class="popup__input popup__name"
-                id="popup__place"
-                placeholder="Título"
-                value=""
-                minlength="2"
-                maxlength="30"
-                required
+    <section class="popup popup-card popup-hidden">
+      <div class="popup__wrapper">
+        <div class="popup__style">
+          <form class="popup__form" name="form__card">
+            <button class="popup__close" type="button">
+              <img
+                src="./images/Close-Icon.png"
+                alt="Letra 'X', indicando local de fechamento"
+                class="close"
               />
-              <span class="popup__place-error"> </span>
-              <input
-                type="url"
-                class="popup__input popup__detail"
-                id="popup__url"
-                placeholder="Link de imagem"
-                value=""
-                required
-              />
-              <span class="popup__url-error"> </span>
-              <button
-                class="popup__save popup__save_place popup__save-disabled"
-                type="submit"
-                disabled
-              >
-                Criar
-              </button>
-            </form>
-          </div>
+            </button>
+            <h3 class="popup__title">Novo local</h3>
+            <input
+              type="text"
+              class="popup__input popup__name"
+              name="popup__name-card"
+              id="popup__place"
+              placeholder="Título"
+              value=""
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="popup__place-error"> </span>
+            <input
+              type="url"
+              class="popup__input popup__detail"
+              name="popup__detail-card"
+              id="popup__url"
+              placeholder="Link de imagem"
+              value=""
+              required
+            />
+            <span class="popup__url-error"> </span>
+            <button
+              class="popup__save popup__save_place popup__save-disabled"
+              type="submit"
+              disabled
+            >
+              Criar
+            </button>
+          </form>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+
     <footer class="footer">
       <h3 class="footer__copyrights">&#169; 2023. Around the U.S.</h3>
     </footer>

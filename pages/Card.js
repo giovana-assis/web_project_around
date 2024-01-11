@@ -1,8 +1,9 @@
 class Card {
-  constructor(name, link, cardTemplate) {
+  constructor({ name, link }, cardTemplate, handleCardClick) {
     this._name = name;
     this._link = link;
     this._cardTemplate = cardTemplate;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -27,6 +28,11 @@ class Card {
 
   _setEventListeners() {
     this._element
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handleCardClick(this._name, this._link);
+      });
+    this._element
       .querySelector(".card__delete")
       .addEventListener("click", () => {
         this._deleteCard();
@@ -35,11 +41,6 @@ class Card {
       .querySelector(".card__heart")
       .addEventListener("click", () => {
         this._likeCard();
-      });
-    this._element
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._openImage();
       });
   }
 
@@ -51,17 +52,6 @@ class Card {
     this._element
       .querySelector(".card__heart")
       .classList.toggle("card__heart-active");
-  }
-
-  _openImage() {
-    const cardImage = this._element.querySelector(".card__image");
-    const popUpPhoto = document.querySelector("#popup-photo");
-
-    cardImage.addEventListener("click", () => {
-      popUpPhoto.classList.add("popup-visible");
-      popUpPhoto.querySelector(".popup__image").src = this._link;
-      popUpPhoto.querySelector(".popup__place").textContent = this._name;
-    });
   }
 }
 
