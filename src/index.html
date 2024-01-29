@@ -21,15 +21,16 @@
 
     <section class="profile">
       <div class="profile__info">
-        <img
+        <button class= "profile__button"><img
           alt="Foto de perfil"
           class="profile__picture"
           id="profile__picture"
-          src="<%=require('./images/picture.jpg')%>"
+          src="<%=require('./images/avatar.png')%>"
         />
+      </button>
         <div class="profile__description">
           <div class="profile__text">
-            <h1 class="profile__name">Jacques Costeau</h1>
+            <h1 class="profile__name"></h1>
             <button class="edit-button" type="button">
               <img
                 src="<%=require('./images/button.png')%>"
@@ -38,7 +39,7 @@
               />
             </button>
           </div>
-          <h2 class="profile__detail">Explorar</h2>
+          <h2 class="profile__about"></h2>
         </div>
       </div>
       <button class="add-button" type="button">
@@ -77,15 +78,15 @@
 
             <input
               type="text"
-              name="detail"
-              class="popup__input popup__detail"
-              id="popup__detail"
+              name="about"
+              class="popup__input popup__about"
+              id="popup__about"
               placeholder="Descrição"
               minlength="2"
               maxlength="200"
               required
             />
-            <span class="popup__detail-error"></span>
+            <span class="popup__about-error"></span>
             <button
               class="popup__save popup__save_profile popup__save-disabled"
               type="submit"
@@ -99,7 +100,7 @@
     </section>
     <template id="template">
       <li class="card" id="card">
-        <button class="card__delete">
+        <button class="card__delete card__delete-hidden">
           <img
             src="<%=require('./images/Trash.svg')%>"
             alt="Lata de lixo"
@@ -109,7 +110,10 @@
         <img src="#" alt="#" class="card__image" />
         <div class="card__info">
           <h3 class="card__title">#</h3>
-          <button class="card__heart card__heart-inactive"></button>
+          <div class="card__like-container">
+            <button class="card__heart card__heart-inactive"></button>
+            <p class="card__like-counter"></p>
+          </div>
         </div>
       </li>
     </template>
@@ -154,7 +158,7 @@
             <span class="popup__place-error"> </span>
             <input
               type="url"
-              class="popup__input popup__detail"
+              class="popup__input popup__about"
               name="link"
               id="popup__url"
               placeholder="Link de imagem"
@@ -174,8 +178,32 @@
       </div>
     </section>
 
+    <section class="popup popup-delete popup-hidden">
+      <div class="popup__wrapper">
+        <div class="popup__style">
+          <form class="popup__form" name="form_delete" novalidate>
+            <button class="popup__close" type="button">
+              <img
+                src="<%=require('./images/Close-Icon.png')%>"
+                alt="Letra 'X', indicando local de fechamento"
+                class="close"
+              />
+            </button>
+            <h3 class="popup__title">Tem certeza?</h3>
+            <button
+              class="popup__save popup__save_delete"
+              type="button"
+              disabled
+            >
+              Sim
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer">
-      <h3 class="footer__copyrights">&#169; 2023. Around the U.S.</h3>
+      <h3 class="footer__copyrights">&#169; 2023. Giovana Assis.</h3>
     </footer>
   </body>
 </html>
