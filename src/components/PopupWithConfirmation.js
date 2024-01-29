@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
+export default class PopupWithConfirmation extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
@@ -15,11 +15,8 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    console.log(this._popup);
-    const buttonDeletePopup = this._popup.querySelector(".popup__save");
-    console.log(buttonDeletePopup);
-    this._popup.addEventListener("click", (e) => {
-      console.log("ok");
+    const buttonDeletePopup = this._popup.querySelector(".popup__save_delete");
+    buttonDeletePopup.addEventListener("click", (e) => {
       e.preventDefault();
       this._handleFormSubmit(this._card).then(() => {
         this.close();

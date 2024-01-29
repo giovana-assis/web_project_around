@@ -25,7 +25,7 @@
           alt="Foto de perfil"
           class="profile__picture"
           id="profile__picture"
-          src="<%=require('./images/avatar.png')%>"
+          src="<%=require('./images/picture.jpg')%>"
         />
       </button>
         <div class="profile__description">
@@ -192,6 +192,39 @@
             <h3 class="popup__title">Tem certeza?</h3>
             <button
               class="popup__save popup__save_delete"
+              type="click"
+            >
+              Sim
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="popup popup-avatar popup-hidden">
+      <div class="popup__wrapper">
+        <div class="popup__style">
+          <form class="popup__form" name="form_avatar" novalidate>
+            <button class="popup__close" type="button">
+              <img
+                src="<%=require('./images/Close-Icon.png')%>"
+                alt="Letra 'X', indicando local de fechamento"
+                class="close"
+              />
+            </button>
+            <h3 class="popup__title">Alterar a foto de perfil</h3>
+            <span class="popup__avatar-error"> </span>
+            <input
+              type="url"
+              class="popup__input popup__url-avatar"
+              name="link"
+              id="popup__url-avatar"
+              placeholder="Link de imagem"
+              value=""
+              required
+            />
+            <button
+              class="popup__save popup__save_avatar"
               type="button"
               disabled
             >

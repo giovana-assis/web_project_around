@@ -77,6 +77,10 @@
   display: none;
 }
 
+.card__like-counter{
+  color:#000;
+}
+
 @media screen and (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr 1fr;

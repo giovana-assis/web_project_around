@@ -13,9 +13,11 @@
 
 .profile__picture {
   width: 168px;
+  height: 168px;
   border-radius: 50%;
   flex-shrink: 0;
   margin-right: 30px;
+  
 }
 
 .profile__name {

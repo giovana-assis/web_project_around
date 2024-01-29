@@ -41,11 +41,25 @@ api
             popupWithImage.open(item.name, item.link);
           },
           handleDeleteClick: () => {
-            deleteFormElement.open(card);
+            
+            const deleteFormElement = new PopupWithConfirmation ({
+              popupSelector: ".popup-delete",
+              handleFormSubmit: (item) => {
+                return api.deleteCard(item._id) 
+                .then(() => {
+                  card.removeCard()
+                })
+                .catch((err) => {
+                  console.log(err)
+                })
+              }
+            });
+            deleteFormElement.open(card)
+            deleteFormElement.setEventListeners();;
           },
           handleLikeClick: (LikeButtonIsActive, cardId, likeCounter) => {
-            api.updateLike(LikeButtonIsActive, cardId).then((result) => {
-              likeCounter.textContent = result.likes.length;
+            api.updateLike(LikeButtonIsActive, card._id).then((res) => {
+              likeCounter.textContent = res.likes.length;
             });
           },
 
@@ -56,6 +70,7 @@ api
       ".cards-container"
     );
     section.renderInitialCards();
+
     const popupCard = new PopupWithForm({
       submitCallback: (item) => {
         api.createCard(item).then((createCard) => {
@@ -72,28 +87,14 @@ api
     console.log(err); // registra o erro no console
   });
 
-const deleteFormElement = new PopupWithConfirmation ({
-  popupSelector: ".popup-delete",
-  handleFormSubmit: (card) => {
-    console.log(card)
-    return api.deleteCard(card._cardId) // Card ID undefined
-    .then(() => {
-      card.removeCard()
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
-});
 
-deleteFormElement.setEventListeners();
 
 
 
 const userInfo = new UserInfo({
   name: ".profile__name",
   about: ".profile__about",
-  // avatar: avatar,
+  avatar: ".profile__picture",
   // userId: _id,
 });
 
@@ -113,6 +114,29 @@ const popupForm = new PopupWithForm({
     userInfo.setUserInfo(name, about);
   },
   popupSelector: ".popup-profile"
+});
+
+const popupAvatar = new PopupWithForm({
+  submitCallback: ({avatar}) => {
+    api.setUserAvatar({
+        avatar: document.querySelector(".popup__url-avatar").value,
+      })
+      userInfo.setUserInfo(name, about, avatar)
+
+      // .then((result) => {
+      //   console.log(result)
+      //   userInfo.setUserAvatar(result.avatar);
+      //   userInfo.setUserInfo();
+      //   popupAvatar.close();
+      // })
+  },
+  popupSelector: ".popup-avatar"
+})
+popupAvatar.setEventListeners();
+
+const buttonAvatar = document.querySelector(".profile__button ")
+buttonAvatar.addEventListener("click", () => {
+  popupAvatar.open();
 });
 
 openFormButton.addEventListener("click", () => {

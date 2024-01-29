@@ -64,7 +64,7 @@ setUserAvatar(imageLink) {
 }
 
 deleteCard(cardId) {
-  return fetch(`${this._baseUrl}/cards/${cardId}`, {
+  return fetch(`${this._baseURL}/cards/${cardId}`, {
     method: "DELETE",
     headers: this._headers,
   }).then((res) => {
@@ -112,7 +112,7 @@ updateLike(LikeButtonIsActive, cardId){
   }
 }
 
-editAvatar({ avatar }) {
+setUserAvatar({ avatar }) {
   return fetch(`${this._baseUrl}/users/me/avatar`, {
     method: "PATCH",
     headers: this._headers,
@@ -125,6 +125,7 @@ editAvatar({ avatar }) {
     return Promise.reject(`Error: ${res.status}`);
   });
 }
+
 
 }
 
