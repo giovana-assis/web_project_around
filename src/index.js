@@ -71,9 +71,12 @@ api
 
     const popupCard = new PopupWithForm({
       submitCallback: (item) => {
-        api.createCard(item).then((createCard) => {
-          section.addItem(createCard);
-        });
+        api
+          .createCard(item)
+          .then((createCard) => {
+            section.addItem(createCard);
+          })
+          .finally(() => popupCard.renderLoading(false));
       },
       popupSelector: ".popup-card",
     });
@@ -120,8 +123,12 @@ buttonAvatar.addEventListener("click", () => {
 
 const popupForm = new PopupWithForm({
   submitCallback: ({ name, about }) => {
-    api.setUserProfile({ name, about });
-    userInfo.setUserInfo(name, about);
+    api
+      .setUserProfile({ name, about })
+      .then(() => {
+        userInfo.setUserInfo(name, about);
+      })
+      .finally(() => popupForm.renderLoading(false));
   },
   popupSelector: ".popup-profile",
 });

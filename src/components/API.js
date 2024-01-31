@@ -13,7 +13,6 @@ export default class API {
       if (res.ok) {
         return res.json();
       }
-      // se o servidor retornar um erro, rejeite a promessa
       return Promise.reject(`Error: ${res.status}`);
     });
   }
@@ -38,7 +37,7 @@ export default class API {
   }
 
   setUserProfile({ name, about }) {
-    fetch(`${this._baseURL}/users/me`, {
+    return fetch(`${this._baseURL}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({

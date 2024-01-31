@@ -81,7 +81,6 @@ class Card {
     );
     const heart = this._element.querySelector(".card__heart");
     heart.classList.toggle("card__heart-active");
-    // heart.classList.remove("card__heart-inactive");
   }
 }
 

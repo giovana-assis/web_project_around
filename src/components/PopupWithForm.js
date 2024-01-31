@@ -5,7 +5,7 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._form = this._popup.querySelector(".popup__form");
     this._submitCallback = submitCallback;
-    this._buttonValue = this._popup.querySelector(".popup__save").value;
+    this._button = this._popup.querySelector(".popup__save");
     this.setEventListeners();
   }
 
@@ -20,6 +20,7 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._submitCallback(this._getInputValues());
+      this.renderLoading(true);
       this.close();
     });
   }
@@ -31,13 +32,11 @@ export default class PopupWithForm extends Popup {
 
   renderLoading(isLoading) {
     if (isLoading) {
-      this._popup.querySelector(".popup__save").textContent = "Saving...";
+      this._button.textContent = "Salvando...";
     } else {
-      this._popup.querySelector(".popup__save").value = this._buttonValue;
+      this._button.setAttribute("disabled", "");
+      this._button.classList.add("popup__save-disabled");
+      this._button.textContent = "Salvar";
     }
-  }
-
-  setSubmitAction(action) {
-    this._submitCallback = action;
   }
 }
