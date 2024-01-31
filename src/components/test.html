@@ -1,0 +1,46 @@
+
+<section class="popup popup-card popup-hidden">
+    <div class="popup__wrapper">
+      <div class="popup__style">
+        <form class="popup__form" name="form__card">
+          <button class="popup__close" type="button">
+            <img
+              src="<%=require('./images/Close-Icon.png')%>"
+              alt="Letra 'X', indicando local de fechamento"
+              class="close"
+            />
+          </button>
+          <h3 class="popup__title">Novo local</h3>
+          <input
+            type="text"
+            class="popup__input popup__name"
+            name="name"
+            id="popup__place"
+            placeholder="Título"
+            value=""
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span class="popup__place-error"> </span>
+          <input
+            type="url"
+            class="popup__input popup__about"
+            name="link"
+            id="popup__url"
+            placeholder="Link de imagem"
+            value=""
+            required
+          />
+          <span class="popup__url-error"> </span>
+          <button
+            class="popup__save popup__save_place popup__save-disabled"
+            type="submit"
+            disabled
+          >
+            Criar
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>

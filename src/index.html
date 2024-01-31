@@ -21,13 +21,14 @@
 
     <section class="profile">
       <div class="profile__info">
-        <button class= "profile__button"><img
-          alt="Foto de perfil"
-          class="profile__picture"
-          id="profile__picture"
-          src="<%=require('./images/picture.jpg')%>"
-        />
-      </button>
+        <button class="profile__button">
+          <img
+            alt="Foto de perfil"
+            class="profile__picture"
+            id="profile__picture"
+            src="#"
+          />
+        </button>
         <div class="profile__description">
           <div class="profile__text">
             <h1 class="profile__name"></h1>
@@ -190,10 +191,7 @@
               />
             </button>
             <h3 class="popup__title">Tem certeza?</h3>
-            <button
-              class="popup__save popup__save_delete"
-              type="click"
-            >
+            <button class="popup__save popup__save_delete" type="click">
               Sim
             </button>
           </form>
@@ -213,22 +211,22 @@
               />
             </button>
             <h3 class="popup__title">Alterar a foto de perfil</h3>
-            <span class="popup__avatar-error"> </span>
             <input
               type="url"
               class="popup__input popup__url-avatar"
-              name="link"
               id="popup__url-avatar"
               placeholder="Link de imagem"
               value=""
               required
             />
+            <span class="popup__url-avatar-error"> </span>
+
             <button
-              class="popup__save popup__save_avatar"
-              type="button"
-              disabled
+              class="popup__save popup__save_avatar popup__save-disabled"
+              type="submit"
+             
             >
-              Sim
+              Salvar
             </button>
           </form>
         </div>

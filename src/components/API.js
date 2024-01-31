@@ -54,14 +54,14 @@ export default class API {
       });
 }
 
-editUserProfile({ name, about }) {
-    this._nameElement = name;
-    this._aboutElement = about;
-}
+// editUserProfile({ name, about }) {
+//     this._nameElement = name;
+//     this._aboutElement = about;
+// }
 
-setUserAvatar(imageLink) {
-    this._userAvatar = imageLink;
-}
+// setUserAvatar(imageLink) {
+//     this._userAvatar = imageLink;
+// }
 
 deleteCard(cardId) {
   return fetch(`${this._baseURL}/cards/${cardId}`, {
@@ -79,7 +79,6 @@ deleteCard(cardId) {
 
 updateLike(LikeButtonIsActive, cardId){
   if(LikeButtonIsActive) {
-    //unlike heart button
     return fetch(`${this._baseURL}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers
@@ -95,7 +94,6 @@ updateLike(LikeButtonIsActive, cardId){
     });
   }
   else {
-    //like heart button
     return fetch(`${this._baseURL}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers
@@ -112,18 +110,20 @@ updateLike(LikeButtonIsActive, cardId){
   }
 }
 
-setUserAvatar({ avatar }) {
-  return fetch(`${this._baseUrl}/users/me/avatar`, {
-    method: "PATCH",
+setUserAvatar(avatar) {
+  return fetch(`${this._baseURL}/users/me/avatar`, {
     headers: this._headers,
-    body: JSON.stringify({ avatar: avatar }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
-  });
+    method: "PATCH",
+    body: JSON.stringify(
+      { avatar: avatar.link}
+    ),
+  })
+    .then((res) =>
+      (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
+    )
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 

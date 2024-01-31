@@ -12,6 +12,8 @@ import {
   openFormButton,
   formProfile,
   cardForm,
+  buttonAvatar,
+  avatarForm
 } from "./components/enums/constants.js";
 import API from "./components/API.js";
 import PopupWithConfirmation from "./components/PopupWithConfirmation.js";
@@ -80,7 +82,7 @@ api
     });
   })
   .catch((err) => {
-    console.log(err); // registra o erro no console
+    console.log(err); 
   });
 
 const userInfo = new UserInfo({
@@ -107,20 +109,20 @@ const popupForm = new PopupWithForm({
 });
 
 const popupAvatar = new PopupWithForm({
- submitCallback: (avatar) => {
-    api.setUserAvatar(avatar).then((result) => {
-      console.log(result)
-      userInfo.setUserAvatar(result.avatar);
-      popupAvatar.close();
-    })
-    .finally(() => popupAvatar.renderLoading(false));
-},
-popupSelector: ".popup-avatar",
+  submitCallback: (avatar) => {
+    api
+      .setUserAvatar(avatar)
+      .then((result) => {
+        console.log(avatar);
+        userInfo.setUserAvatar(result.avatar);
+        popupAvatar.close();
+      })
+      .finally(() => popupAvatar.renderLoading(false));
+  },
+  popupSelector: ".popup-avatar",
 });
 
-// popupAvatar.setEventListeners();
 
-const buttonAvatar = document.querySelector(".profile__button ");
 buttonAvatar.addEventListener("click", () => {
   popupAvatar.open();
 });
@@ -132,6 +134,8 @@ openFormButton.addEventListener("click", () => {
 
 const formProfileValidator = new FormValidator(config, formProfile);
 const cardFormValidator = new FormValidator(config, cardForm);
+const avatarFormValidator = new FormValidator(config, avatarForm)
 
 formProfileValidator.enableValidation();
 cardFormValidator.enableValidation();
+avatarFormValidator.enableValidation()

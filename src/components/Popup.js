@@ -26,7 +26,9 @@ export default class Popup {
     const popupWrapper = this._popup.querySelector(".popup__wrapper");
     buttonClose.addEventListener("click", this.close);
     document.addEventListener("click", (evt) => {
-        if (evt.target === popupWrapper){ 
-        this.close()}})}
-
+      if (evt.target === popupWrapper) {
+        this.close();
+      }
+    });
   }
+}

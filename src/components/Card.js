@@ -1,5 +1,10 @@
 class Card {
-  constructor({ name, link, likes, _id, owner }, cardTemplate, {handleCardClick, handleDeleteClick, handleLikeClick}, cardId) {
+  constructor(
+    { name, link, likes, _id, owner },
+    cardTemplate,
+    { handleCardClick, handleDeleteClick, handleLikeClick },
+    cardId
+  ) {
     this._name = name;
     this._link = link;
     this._likes = likes;
@@ -40,7 +45,6 @@ class Card {
     };
     trashDeleteOwner();
 
-
     return this._element;
   }
 
@@ -70,14 +74,14 @@ class Card {
     const likeButtonIsActive = this._element
       .querySelector(".card__heart")
       .classList.contains("card__heart-active");
-      this._handleLikeClick(
-        likeButtonIsActive,
-        this._id,
-        this._element.querySelector(".card__like-counter")
-      )
-      const heart = this._element.querySelector(".card__heart")
-      heart.classList.toggle("card__heart-active")
-      // heart.classList.remove("card__heart-inactive");
+    this._handleLikeClick(
+      likeButtonIsActive,
+      this._id,
+      this._element.querySelector(".card__like-counter")
+    );
+    const heart = this._element.querySelector(".card__heart");
+    heart.classList.toggle("card__heart-active");
+    // heart.classList.remove("card__heart-inactive");
   }
 }
 

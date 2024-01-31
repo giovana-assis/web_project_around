@@ -79,7 +79,7 @@
   margin-top: 54px;
 }
 
-.popup__about {
+.popup__input {
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -127,6 +127,10 @@
   position: absolute;
   left: 0;
   bottom: -30px;
+}
+
+.popup__url-avatar {
+  margin-top: 50px;
 }
 
 .popup__input_type-error {
