@@ -1,12 +1,12 @@
-import "./blocks/index.css";
+import "../page/index.css"
 
-import FormValidator from "./components/FormValidator.js";
-import Card from "./components/Card.js";
-import { config } from "./components/enums/Config.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import Section from "./components/Section.js";
-import UserInfo from "./components/UserInfo.js";
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import { config } from "../components/enums/Config.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
 import {
   addFormButton,
   openFormButton,
@@ -14,9 +14,9 @@ import {
   cardForm,
   buttonAvatar,
   avatarForm,
-} from "./components/enums/constants.js";
-import API from "./components/API.js";
-import PopupWithConfirmation from "./components/PopupWithConfirmation.js";
+} from "../components/enums/constants.js";
+import API from "../components/API.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const api = new API({
   baseURL: "https://around.nomoreparties.co/v1/web_ptbr_08",
@@ -27,6 +27,22 @@ const api = new API({
 });
 
 const popupWithImage = new PopupWithImage("#popup-photo");
+
+const userInfo = new UserInfo({
+  name: ".profile__name",
+  about: ".profile__about",
+  avatar: ".profile__picture",
+});
+
+api
+  .getUserProfile()
+  .then(({ name, about, avatar }) => {
+    userInfo.setUserInfo(name, about);
+    userInfo.setUserAvatar(avatar);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 api
   .getInitialCards()
@@ -88,21 +104,6 @@ api
     console.log(err);
   });
 
-const userInfo = new UserInfo({
-  name: ".profile__name",
-  about: ".profile__about",
-  avatar: ".profile__picture",
-});
-
-api
-  .getUserProfile()
-  .then(({ name, about, avatar }) => {
-    userInfo.setUserInfo(name, about);
-    userInfo.setUserAvatar(avatar);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 const popupAvatar = new PopupWithForm({
   submitCallback: ({ avatar }) => {

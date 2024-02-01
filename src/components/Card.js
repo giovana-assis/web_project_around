@@ -33,6 +33,8 @@ class Card {
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__image").alt = this._name;
     this._element.querySelector(".card__title").textContent = this._name;
+    this._element.querySelector(".card__like-counter").textContent =
+      this._likes.length;
 
     const trashDeleteOwner = () => {
       const myId = "94395b635080f2dd73235768";
@@ -45,7 +47,18 @@ class Card {
     };
     trashDeleteOwner();
 
+    if (this.isLiked()) {
+      const likeButton = this._element.querySelector(".card__heart");
+      likeButton.classList.add("card__heart-active");
+    }
+
     return this._element;
+  }
+
+  isLiked() {
+    const myId = "94395b635080f2dd73235768";
+
+    return this._likes.find((res) => res._id === myId);
   }
 
   _setEventListeners() {
