@@ -17,3 +17,6 @@ Como funcionalidade, foram implementadas a opção de alteração de imagem de p
 
 Melhora de UX design e adicionar opção de comentários em cada foto.
 
+### Acesse o site em:
+
+https://giovana-assis.github.io/web_project_around/
