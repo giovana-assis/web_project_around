@@ -12,14 +12,11 @@
   justify-content: center;
 }
 
-.profile__button:hover .profile__picture{
-  opacity: 0;
-  z-index: -1;
-}
-
-.profile__button{
+.profile__button {
   width: 168px;
   height: 168px;
+  background-color: black;
+  border: none;
 }
 
 .profile__picture {
@@ -30,27 +27,11 @@
   margin-right: 30px;
   z-index: 0;
 }
-.overlay-img{
-  background-image: url("../images/button.png");
-  opacity: 1;
-  transition: .5s ease;
-  position: absolute; 
-  width: 168px;
-  height: 168px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-right: 30px; 
-  background-repeat: no-repeat;
-}
-
-.overlay-img:hover {
-  opacity: 0.5;
-  z-index: 2;
-}
 
 .profile__picture:hover {
-  opacity: 1;
+  opacity: 0.5;
   z-index: 0;
+  transition: 0.5s ease-in-out;
 }
 
 .profile__name {
@@ -108,11 +89,6 @@
   background-color: black;
   width: 150px;
   height: 50px;
-}
-
-.profile__button {
-  background-color: black;
-  border: none;
 }
 
 @media screen and (max-width: 768px) {
